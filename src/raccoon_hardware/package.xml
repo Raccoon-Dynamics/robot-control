@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>raccoon_hardware</name>
+  <version>0.0.0</version>
+  <description>
+    Robot hardware interface for the Raspberry Pi 4B: actuators, wheel odometry
+    and low-level I/O. Currently a heartbeat-only placeholder.
+    BUILT ON THE PI ONLY.
+  </description>
+  <maintainer email="reachadamzhang@gmail.com">Adam Zhang</maintainer>
+  <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>raccoon_interfaces</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <!--
+    TODO: the actuator driver has NOT been chosen yet. Once it is, add the
+    matching dependency here and to requirements.txt if it is pip-only:
+      * motor controller over I2C/GPIO -> e.g. a vendor pip lib (no rosdep key)
+      * MCU over serial               -> <exec_depend>pyserial</exec_depend>
+      * ros2_control                  -> <depend>ros2_control</depend>,
+                                         <depend>hardware_interface</depend>,
+                                         <depend>controller_manager</depend>
+                                         (and this package becomes ament_cmake)
+  -->
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

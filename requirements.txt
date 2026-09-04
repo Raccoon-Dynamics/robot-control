@@ -1,0 +1,7 @@
+# ---------------------------------------------------------------------------
+# Auxiliary Python packages ONLY. Install with:  pip install --user -r requirements.txt
+# Do NOT use a virtualenv — ROS 2 Humble uses system Python 3.10.
+# ROS packages (rclpy, cv_bridge, depthai-ros, rplidar-ros, etc.) are installed via
+# apt + rosdep — NOT here. Only add pip-only libs with no rosdep key.
+# ---------------------------------------------------------------------------
+# (none required yet)

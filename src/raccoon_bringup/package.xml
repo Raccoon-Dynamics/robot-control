@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>raccoon_bringup</name>
+  <version>0.0.0</version>
+  <description>
+    Top-level launch + shared configuration for the Raccoon robot. Built on BOTH
+    boards; bringup.launch.py starts only what is actually installed locally, so
+    the same command works on the Pi and on the Jetson.
+  </description>
+  <maintainer email="reachadamzhang@gmail.com">Adam Zhang</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!--
+    Board-specific packages are listed as exec_depend so rosdep/colcon know the
+    ordering. They all live under ./src/, so the rosdep install command (which
+    passes ignore-src) skips them, and bringup.launch.py guards every include at
+    runtime — a board that never builds raccoon_lidar still launches cleanly.
+  -->
+  <exec_depend>raccoon_description</exec_depend>
+  <exec_depend>raccoon_interfaces</exec_depend>
+  <exec_depend>raccoon_lidar</exec_depend>
+  <exec_depend>raccoon_hardware</exec_depend>
+  <exec_depend>raccoon_perception</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

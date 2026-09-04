@@ -1,10 +1,36 @@
+# Secrets
 .env
 
+# ROS 2 / colcon (generated per board — never commit)
+build/
+install/
+log/
 
-# ROS
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# Virtualenvs (ROS uses system Python; ignore if one ever appears)
+.venv/
+venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# Preserved from the previous ROS 1 / catkin .gitignore. Kept so nothing that
+# was ignored before starts showing up; prune once ROS 1 is fully gone.
+# ---------------------------------------------------------------------------
 devel/
 logs/
-build/
 bin/
 lib/
 msg_gen/
@@ -38,15 +64,12 @@ CMakeLists.txt.user
 
 srv/_*.py
 *.pcd
-*.pyc
 qtcreator-*
 *.user
 
 /planning/cfg
 /planning/docs
 /planning/src
-
-*~
 
 # Emacs
 .#*

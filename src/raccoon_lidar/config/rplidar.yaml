@@ -1,0 +1,15 @@
+# RPLIDAR A1 driver parameters.
+# The top-level key must match the node name used in launch/rplidar.launch.py.
+rplidar_node:
+  ros__parameters:
+    # /dev/ttyUSB0 is the raw enumeration order and WILL move if another USB
+    # serial device is plugged in first.
+    # TODO: add a udev rule on the Pi creating a stable /dev/rplidar symlink
+    #       (SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60",
+    #        SYMLINK+="rplidar", MODE:="0666") and switch this to /dev/rplidar.
+    serial_port: /dev/ttyUSB0
+    serial_baudrate: 115200      # A1 is 115200; A2/A3 use 256000.
+    frame_id: laser              # Must match the link name in raccoon.urdf.xacro.
+    inverted: false              # true if the unit is mounted upside-down.
+    angle_compensate: true
+    scan_mode: Standard          # A1 modes: Standard | Express | Boost.

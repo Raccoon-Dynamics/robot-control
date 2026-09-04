@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+  Minimal placeholder model for the Raccoon robot.
+
+  TODO: replace the guessed dimensions below with measured values, add inertial
+  blocks (needed for any sim / ros2_control), wheels, and the OAK-D Lite frame.
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="raccoon">
+
+  <!-- TODO: measure the real chassis. Metres. -->
+  <xacro:property name="base_length" value="0.30"/>
+  <xacro:property name="base_width"  value="0.22"/>
+  <xacro:property name="base_height" value="0.08"/>
+
+  <!-- TODO: measure where the RPLIDAR A1 actually sits on the chassis. -->
+  <xacro:property name="laser_xyz" value="0.0 0.0 0.10"/>
+
+  <!-- Root frame. REP-103: x forward, y left, z up. -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!--
+    Child link stub: the RPLIDAR A1 scan frame.
+    Must match `frame_id` in raccoon_lidar/config/rplidar.yaml ("laser").
+  -->
+  <link name="laser"/>
+
+  <joint name="base_link_to_laser" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser"/>
+    <origin xyz="${laser_xyz}" rpy="0 0 0"/>
+  </joint>
+
+</robot>

@@ -1,0 +1,41 @@
+# ---------------------------------------------------------------------------
+# Shared Raccoon parameters.
+#
+# NOTHING LOADS THIS FILE YET — it is the agreed home for cross-node parameters
+# so they do not scatter. Wire it up per node with:
+#     parameters=[os.path.join(bringup_share, 'config', 'params.yaml')]
+# and uncomment the matching section below.
+#
+# Node-local hardware settings that only one package cares about stay with that
+# package (e.g. raccoon_lidar/config/rplidar.yaml).
+# ---------------------------------------------------------------------------
+
+# --- Raspberry Pi 4B -------------------------------------------------------
+
+# hardware_node:
+#   ros__parameters:
+#     # TODO: fill in once the actuator driver is chosen.
+#     # serial_port: /dev/ttyACM0     # if MCU-over-serial wins
+#     # serial_baudrate: 115200
+#     # wheel_radius_m: 0.0
+#     # wheel_separation_m: 0.0
+#     # cmd_vel_timeout_s: 0.5        # stop the motors if commands stop arriving
+#     heartbeat_period_s: 1.0
+
+# rplidar_node:
+#   ros__parameters:
+#     # Authoritative copy lives in raccoon_lidar/config/rplidar.yaml.
+#     # Only duplicate here if bringup starts overriding it.
+
+# --- Jetson Orin Nano ------------------------------------------------------
+
+# perception_node:
+#   ros__parameters:
+#     # TODO: confirm the topic against the running depthai_ros_driver.
+#     image_topic: /oak/rgb/image_raw
+
+# --- Both boards -----------------------------------------------------------
+
+# robot_state_publisher:
+#   ros__parameters:
+#     use_sim_time: false
