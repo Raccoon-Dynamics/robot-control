@@ -2,12 +2,13 @@
 # The top-level key must match the node name used in launch/rplidar.launch.py.
 rplidar_node:
   ros__parameters:
-    # /dev/ttyUSB0 is the raw enumeration order and WILL move if another USB
-    # serial device is plugged in first.
-    # TODO: add a udev rule on the Pi creating a stable /dev/rplidar symlink
-    #       (SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60",
-    #        SYMLINK+="rplidar", MODE:="0666") and switch this to /dev/rplidar.
-    serial_port: /dev/ttyUSB0
+    # Stable symlink created by the Pi's udev rule (SUBSYSTEM=="tty",
+    # ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="rplidar",
+    # MODE:="0666"). The raw /dev/ttyUSB* order moves if another USB serial
+    # device is plugged in first, so never point this at /dev/ttyUSB0.
+    # NOTE: launch/rplidar.launch.py always overrides this key with its
+    #       serial_port launch argument, which defaults to the same value.
+    serial_port: /dev/rplidar
     serial_baudrate: 115200      # A1 is 115200; A2/A3 use 256000.
     frame_id: laser              # Must match the link name in raccoon.urdf.xacro.
     inverted: false              # true if the unit is mounted upside-down.
