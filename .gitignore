@@ -76,4 +76,11 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+# Colcon packages
 **/COLCON_IGNORE
+
+# Notes
+instructions.md
+progress.md
+commands.md
